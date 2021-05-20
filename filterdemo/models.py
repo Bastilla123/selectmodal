@@ -5,33 +5,59 @@ Historie_Status_Choices = (
     (2, 'Inaktiv'),
 )
 
+class foreignkeyclass(models.Model):
+    status = models.PositiveSmallIntegerField(choices=Historie_Status_Choices, blank=True, default=1, null=True)
+
+class manytomanyclass(models.Model):
+    status = models.PositiveSmallIntegerField(choices=Historie_Status_Choices, blank=True, default=1, null=True)
+
 class Historietype(models.Model):
 
     status = models.PositiveSmallIntegerField(choices=Historie_Status_Choices, blank=True, default=1, null=True)
-    name = models.CharField(max_length=120, default="", blank=True, null=True)
+    charfield = models.CharField(max_length=120, default="", blank=True, null=True)
+    integerfield = models.PositiveIntegerField(null=True,
+                                               blank=True)
+    datetimefield = models.DateTimeField(blank=True, null=True,default=None)
+    selectfield = models.ForeignKey(foreignkeyclass, on_delete=models.CASCADE, blank=False, null=False,
+                                         )
+    manytomanyfield = models.ManyToManyField(manytomanyclass, default=None,)
     def __str__(self):
         return self.name
 
 class Historiesubtype(models.Model):
-
     status = models.PositiveSmallIntegerField(choices=Historie_Status_Choices, blank=True, default=1, null=True)
-    name = models.CharField(max_length=120, default="", blank=True, null=True)
-    historietype_link =  models.ForeignKey(Historietype, on_delete=models.CASCADE, blank=False, null=False, default = None,
-                                       )
+    charfield = models.CharField(max_length=120, default="", blank=True, null=True)
+    integerfield = models.PositiveIntegerField(null=True,
+                                               blank=True)
+    datetimefield = models.DateTimeField(blank=True, null=True, default=None)
+    selectfield = models.ForeignKey(foreignkeyclass, on_delete=models.CASCADE, blank=False, null=False,
+                                    )
+    manytomanyfield = models.ManyToManyField(manytomanyclass, default=None, )
+
     def __str__(self):
         return self.name
 
 class Historiesource(models.Model):
-
     status = models.PositiveSmallIntegerField(choices=Historie_Status_Choices, blank=True, default=1, null=True)
-    name = models.CharField(max_length=120, default="", blank=True, null=True)
+    charfield = models.CharField(max_length=120, default="", blank=True, null=True)
+    integerfield = models.PositiveIntegerField(null=True,
+                                               blank=True)
+    datetimefield = models.DateTimeField(blank=True, null=True, default=None)
+    selectfield = models.ForeignKey(foreignkeyclass, on_delete=models.CASCADE, blank=False, null=False,
+                                    )
+    manytomanyfield = models.ManyToManyField(manytomanyclass, default=None, )
     def __str__(self):
         return self.name
 
 class Historieproperty(models.Model):
-
     status = models.PositiveSmallIntegerField(choices=Historie_Status_Choices, blank=True, default=1, null=True)
-    name = models.CharField(max_length=120, default="", blank=True, null=True)
+    charfield = models.CharField(max_length=120, default="", blank=True, null=True)
+    integerfield = models.PositiveIntegerField(null=True,
+                                               blank=True)
+    datetimefield = models.DateTimeField(blank=True, null=True, default=None)
+    selectfield = models.ForeignKey(foreignkeyclass, on_delete=models.CASCADE, blank=False, null=False,
+                                    )
+    manytomanyfield = models.ManyToManyField(manytomanyclass, default=None, )
 
     def __str__(self):
         return self.name

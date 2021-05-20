@@ -13,9 +13,9 @@ class Historieform(forms.ModelForm):
         model = Historie
         fields = ('historietypelink','historiesubtype_link','historiesource_link','historieproperty_link' )
         widgets = {
-            'historietypelink': selectfilterwidget(fields=['status','name'],filter=['name']),
-            'historiesubtype_link':selectfilterwidget(fields=['status','name'],filter=['status','name']),
-            'historiesource_link':multiselectfilterwidget(fields=['status','name'],filter=['name']),
-            'historieproperty_link':multiselectfilterwidget(fields=['status','name'],filter=['status','name']),
+            'historietypelink': selectfilterwidget(fields=['status','charfield','integerfield','datetimefield','selectfield','manytomanyfield'],filter=['status','charfield','integerfield','datetimefield','selectfield','manytomanyfield']),
+            'historiesubtype_link':selectfilterwidget(fields=['status','charfield','integerfield'],filter=['status']),
+            'historiesource_link':multiselectfilterwidget(fields=['status','charfield','integerfield','datetimefield','selectfield','manytomanyfield'],filter=['status','charfield','integerfield','datetimefield','selectfield','manytomanyfield']),
+            'historieproperty_link':multiselectfilterwidget(fields=['status','charfield','integerfield'],filter=['status']),
         }
 
